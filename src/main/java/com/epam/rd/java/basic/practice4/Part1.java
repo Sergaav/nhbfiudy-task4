@@ -25,6 +25,7 @@ public class Part1 {
         while (matcher.find()) {
             matcher.appendReplacement(stringBuffer, matcher.group().substring(2));
         }
+        matcher.appendTail(stringBuffer);
         System.out.println(stringBuffer.toString());
 
 

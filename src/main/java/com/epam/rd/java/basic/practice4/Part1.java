@@ -19,7 +19,7 @@ public class Part1 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        StringBuilder stringBuilder1 = new StringBuilder();
+        StringBuffer stringBuilder1 = new StringBuffer();
         Pattern pattern = Pattern.compile("(?mU)\\w{4,}");
         Matcher matcher = pattern.matcher(stringBuilder);
         while (matcher.find()) {

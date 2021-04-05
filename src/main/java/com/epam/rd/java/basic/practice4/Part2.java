@@ -45,9 +45,8 @@ public class Part2 {
             file.createNewFile();
         }
         try (Writer fileWriter = new FileWriter(file, Charset.forName("cp1251"))) {
-            Random random = new Random();
             for (int i = 0; i < 10; i++) {
-                int number = (random.nextInt(50));
+                int number = (new Random().nextInt(50));
                 fileWriter.write(number + " ");
             }
             fileWriter.flush();

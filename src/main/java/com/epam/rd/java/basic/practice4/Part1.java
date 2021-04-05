@@ -19,13 +19,13 @@ public class Part1 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        StringBuffer stringBuilder1 = new StringBuffer();
+        StringBuffer stringBuffer = new StringBuffer();
         Pattern pattern = Pattern.compile("(?mU)\\w{4,}");
         Matcher matcher = pattern.matcher(stringBuilder);
         while (matcher.find()) {
-            matcher.appendReplacement(stringBuilder1, matcher.group().substring(2));
+            matcher.appendReplacement(stringBuffer, matcher.group().substring(2));
         }
-        System.out.println(stringBuilder1.toString());
+        System.out.println(stringBuffer.toString());
 
 
     }

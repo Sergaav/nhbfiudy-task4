@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class Part1 {
 
     public static void main(String[] args) {
-        String fileName = "src/source1.txt";
+        String fileName = "source1.txt";
         Charset charset = Charset.forName("cp1251");
         StringBuilder stringBuilder = new StringBuilder();
         try (Reader in = new FileReader(fileName, charset)) {

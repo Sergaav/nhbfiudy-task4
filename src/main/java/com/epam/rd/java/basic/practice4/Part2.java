@@ -8,9 +8,9 @@ public class Part2 {
 
     public static void main(String[] args) {
         try {
-            File fileIn = createAndFillFile("src/part2.txt");
-            File fileOut = File.createTempFile("src","part2_sorted.txt");
-            writeFile(fileOut,sort(readFile(fileIn)));
+            File fileIn = createAndFillFile("part2.txt");
+            File fileOut = new File("part2_sorted.txt");
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,7 +44,8 @@ public class Part2 {
         if (!file.exists()) {
             file.createNewFile();
         }
-        try (Writer fileWriter = new FileWriter(file, Charset.forName("cp1251"))) {
+        try {
+            Writer fileWriter = new FileWriter(file, Charset.forName("cp1251"));
             for (int i = 0; i < 10; i++) {
                 int number = (new Random().nextInt(50));
                 fileWriter.write(number + " ");

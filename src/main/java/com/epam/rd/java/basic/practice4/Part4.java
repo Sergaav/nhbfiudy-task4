@@ -41,7 +41,7 @@ public class Part4 {
 
 
     private class IteratorImpl implements Iterator<String> {
-        Pattern pattern = Pattern.compile("(?imU)^.+[\\r\\n',;]*.+[.?!]$");
+        Pattern pattern = Pattern.compile("(?imU)^[A-ZÀ-ß].+([\\r\\n])*[',;]*.+[.?!]$");
         Matcher matcher = pattern.matcher(input);
         boolean isNext = false;
 
@@ -55,7 +55,8 @@ public class Part4 {
         public String next() {
             if (!isNext)
                 throw new NoSuchElementException();
-            return matcher.group();
+
+            return matcher.group().replace("\\r\\n","");
         }
 
         @Override

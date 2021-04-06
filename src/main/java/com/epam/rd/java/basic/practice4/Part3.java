@@ -15,25 +15,24 @@ public class Part3 {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String choice;
         try {
+            System.out.println("Input type of data!");
             while (!(choice = bufferedReader.readLine()).equals("stop")) {
                 switch (choice) {
                     case "char":
-                        findAndPrint(inputData, "(^| =?)\\p{IsAlphabetic}{1}(?= )");
+                        findAndPrint(inputData, "\\b\\p{IsAlphabetic}{1}(?=\\s)");
                         break;
                     case "String":
                         findAndPrint(inputData, "(?mU)\\p{IsAlphabetic}{2,}");
                         break;
                     case "int":
-                        findAndPrint(inputData, " [0-9]+ ");
+                        findAndPrint(inputData, "(?>\\s)[0-9]+(?=\\s)");
                         break;
                     case "double":
-                        findAndPrint(inputData, " ([0-9]| )*\\.[0-9]+? ");
+                        findAndPrint(inputData, "([0-9]|)*\\.[0-9\\.]+");
                         break;
                     default:
                         System.out.println("Incorrect input");
                 }
-
-
             }
         } catch (IOException e) {
             e.printStackTrace();

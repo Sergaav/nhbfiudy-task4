@@ -11,8 +11,8 @@ public class Part5 {
         String input;
         Locale localeRu = new Locale("ru");
         Locale localeEn = new Locale("en");
-        ResourceBundle resourceBundleRu = ResourceBundle.getBundle("resources/resources_ru.properties",localeRu);
-        ResourceBundle resourceBundleEn = ResourceBundle.getBundle("resources/resources_ru.properties",localeEn);
+        ResourceBundle resourceBundleRu = ResourceBundle.getBundle("resources.properties",localeRu);
+        ResourceBundle resourceBundleEn = ResourceBundle.getBundle("resources.properties",localeEn);
         while ((input=scanner.nextLine()).equals("stop")){
             String[] temp = input.split(" ");
             if (temp[1].equals("ru")){

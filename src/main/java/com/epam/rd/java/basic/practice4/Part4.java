@@ -56,7 +56,7 @@ public class Part4 {
             if (!isNext)
                 throw new NoSuchElementException();
 
-            return matcher.group().replace("\\r\\n","");
+            return matcher.group().replaceAll("\\r\\n","");
         }
 
         @Override

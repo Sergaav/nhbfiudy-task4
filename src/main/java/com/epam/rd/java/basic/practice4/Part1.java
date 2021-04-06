@@ -11,7 +11,7 @@ public class Part1 {
 
     public static void main(String[] args) {
         try  {
-            byte[] bytes = Files.readAllBytes(Paths.get("source1.txt"));
+            byte[] bytes = Files.readAllBytes(Paths.get("part1.txt"));
             String input = new String(bytes,Charset.forName("cp1251"));
             StringBuffer stringBuffer = new StringBuffer();
             Pattern pattern = Pattern.compile("(?mU)\\w{4,}");

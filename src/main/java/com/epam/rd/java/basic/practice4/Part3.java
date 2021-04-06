@@ -16,7 +16,6 @@ public class Part3 {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String choice;
         try {
-            System.out.println("Input type of data!");
             while (!(choice = bufferedReader.readLine()).equals("stop")) {
                 switch (choice) {
                     case "char":
@@ -50,7 +49,7 @@ public class Part3 {
             stringBuilder.append(matcher.group().trim()).append(" ");
         }
         if (stringBuilder.length() > 1) {
-            System.out.println(stringBuilder.substring(0, stringBuilder.lastIndexOf(" ")));
+            System.out.println(stringBuilder);
         }
     }
 

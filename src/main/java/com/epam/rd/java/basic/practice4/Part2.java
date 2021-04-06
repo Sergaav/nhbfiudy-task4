@@ -2,29 +2,16 @@ package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.Random;
 
 public class Part2 {
 
     public static void main(String[] args) {
-        try {
-            File fileIn = createAndFillFile("part2.txt");
-            File fileOut = new File("part2_sorted.txt");
 
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
-    private static int [] readFile(File file) {
-
-   return null; }
-
-    private static void writeFile(File file, int [] arr) {
-
-    }
 
     private static int[] sort(int[] arr) {
         for (int i = arr.length - 1; i > 0; i--) {
@@ -39,22 +26,13 @@ public class Part2 {
         return arr;
     }
 
-    private static File createAndFillFile(String filePath) throws IOException {
-        File file = new File(filePath);
-        if (!file.exists()) {
-            file.createNewFile();
+    private static File createAndFillFile() {
+        File fileName = new File("part2.txt");
+        Charset charset = Charset.forName("cp1251");
+        if (!fileName.exists()){
+            fileName.
         }
-        try {
-            Writer fileWriter = new FileWriter(file, Charset.forName("cp1251"));
-            for (int i = 0; i < 10; i++) {
-                int number = (new Random().nextInt(50));
-                fileWriter.write(number + " ");
-            }
-            fileWriter.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return file;
+
     }
 
 }

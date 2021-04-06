@@ -2,6 +2,8 @@ package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Random;
 
 public class Part2 {
@@ -20,9 +22,9 @@ public class Part2 {
         for (int j : masInt) {
             stringBuilder.append(j).append(" ");
         }
-        writeFile(stringBuilder.substring(0,stringBuilder.lastIndexOf(" ")), "part2_sorted.txt");
-        System.out.println("input ==> "+ readFile("part2.txt"));
-        System.out.println("output ==> "+ readFile("part2_sorted.txt"));
+        writeFile(stringBuilder.substring(0, stringBuilder.lastIndexOf(" ")), "part2_sorted.txt");
+        System.out.println("input ==> " + readFile("part2.txt"));
+        System.out.println("output ==> " + readFile("part2_sorted.txt"));
     }
 
 
@@ -39,38 +41,24 @@ public class Part2 {
     }
 
     private static void writeFile(String s, String fileName) {
-        File file = new File(fileName);
-        boolean isExist = file.exists();
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, Charset.forName("cp1251")))) {
-            if (!isExist) {
-                isExist = file.createNewFile();
-            }
-            if (isExist) {
-                bufferedWriter.write(s);
-                bufferedWriter.flush();
-            }
+        try (OutputStream out = Files.newOutputStream(Paths.get(fileName))) {
+            out.write(s.getBytes(Charset.forName("cp1251")));
+            out.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private static String readFile(String fileName) {
-        File file = new File(fileName);
-        StringBuilder stringBuffer = new StringBuilder();
-        boolean isExist = file.exists();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file, Charset.forName("cp1251")))) {
-            if (!isExist) {
-                isExist = file.createNewFile();
-            }
-            if (isExist) {
-                while (bufferedReader.ready()) {
-                    stringBuffer.append(bufferedReader.readLine()).append(System.lineSeparator());
-                }
-            }
+        String output = "";
+        try {
+            byte[] bytes = Files.readAllBytes(Paths.get(fileName));
+            output = new String(bytes, Charset.forName("cp1251"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return stringBuffer.substring(0,stringBuffer.lastIndexOf(System.lineSeparator()));
+        return output;
     }
 
     private static String createAndFillFile() {

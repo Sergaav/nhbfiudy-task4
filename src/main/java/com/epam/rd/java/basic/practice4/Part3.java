@@ -1,10 +1,11 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,7 +47,7 @@ public class Part3 {
         Matcher matcher = pattern.matcher(input);
         StringBuilder stringBuilder = new StringBuilder();
         while (matcher.find()) {
-            stringBuilder.append(matcher.group()).append(" ");
+            stringBuilder.append(matcher.group().trim()).append(" ");
         }
         if (stringBuilder.length() > 1) {
             System.out.println(stringBuilder.substring(0, stringBuilder.lastIndexOf(" ")));
@@ -54,15 +55,14 @@ public class Part3 {
     }
 
     private static String readContentFromFile() {
-        StringBuilder stringBuilder = new StringBuilder();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("part3.txt", Charset.forName("cp1251")))) {
-            while (bufferedReader.ready()) {
-                stringBuilder.append(bufferedReader.readLine()).append(System.lineSeparator());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        String res = null;
+        try {
+            byte[] bytes = Files.readAllBytes(Paths.get("part3.txt"));
+            res = new String(bytes, Charset.forName("cp1251"));
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
-        return stringBuilder.substring(0, stringBuilder.lastIndexOf(System.lineSeparator()));
+        return res;
     }
 
 

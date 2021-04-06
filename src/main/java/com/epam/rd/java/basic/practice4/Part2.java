@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Random;
+import java.security.SecureRandom;
 
 public class Part2 {
 
@@ -64,7 +64,7 @@ public class Part2 {
     private static String createAndFillFile() {
         StringBuilder stringBuffer = new StringBuilder();
         for (int i = 0; i < 10; i++) {
-            stringBuffer.append(new Random().nextInt(50)).append(" ");
+            stringBuffer.append(new SecureRandom().nextInt(50)).append(" ");
         }
         String fileName = "part2.txt";
         writeFile(stringBuffer.substring(0, stringBuffer.lastIndexOf(" ")), fileName);

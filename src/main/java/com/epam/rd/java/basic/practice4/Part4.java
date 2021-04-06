@@ -41,7 +41,7 @@ public class Part4 {
 
 
     private class IteratorImpl implements Iterator<String> {
-        Pattern pattern = Pattern.compile("(?imU)^[A-ZÀ-ß].+([\\r\\n])*[',;]*.+[.?!]$");
+        Pattern pattern = Pattern.compile("(?imU)^[A-ZÀ-ß].+[\\r\\n',;]*.+[.?!]$");
         Matcher matcher = pattern.matcher(input);
         boolean isNext = false;
 

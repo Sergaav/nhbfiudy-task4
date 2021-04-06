@@ -21,6 +21,9 @@ public class Demo {
         Part3.main(args);
         // restore the standard input
         System.setIn(STD_IN);
+
+        System.out.println("=========================== PART4");
+        Part4.main(args);
     }
 
 }

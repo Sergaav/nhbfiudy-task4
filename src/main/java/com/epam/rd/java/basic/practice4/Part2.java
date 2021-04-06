@@ -21,8 +21,8 @@ public class Part2 {
             stringBuilder.append(j).append(" ");
         }
         writeFile(stringBuilder.substring(0,stringBuilder.lastIndexOf(" ")), "part2_sorted.txt");
-        System.out.print("input ==> "+ readFile("part2.txt"));
-        System.out.print("output ==> "+ readFile("part2_sorted.txt"));
+        System.out.println("input ==> "+ readFile("part2.txt"));
+        System.out.println("output ==> "+ readFile("part2_sorted.txt"));
     }
 
 
@@ -70,7 +70,7 @@ public class Part2 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return stringBuffer.toString();
+        return stringBuffer.substring(0,stringBuffer.lastIndexOf(System.lineSeparator()));
     }
 
     private static String createAndFillFile() {

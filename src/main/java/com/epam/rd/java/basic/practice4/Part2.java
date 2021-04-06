@@ -45,7 +45,7 @@ public class Part2 {
             out.write(s.getBytes(Charset.forName("cp1251")));
             out.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ public class Part2 {
             output = new String(bytes, Charset.forName("cp1251"));
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return output;
     }

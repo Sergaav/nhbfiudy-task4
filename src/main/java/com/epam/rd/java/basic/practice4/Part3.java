@@ -35,7 +35,7 @@ public class Part3 {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
 

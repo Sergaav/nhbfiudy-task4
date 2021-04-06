@@ -22,7 +22,7 @@ public class Part1 {
             matcher.appendTail(stringBuffer);
             System.out.println(stringBuffer.toString());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }

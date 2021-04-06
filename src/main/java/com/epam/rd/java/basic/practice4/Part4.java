@@ -29,14 +29,14 @@ public class Part4 {
     }
 
     private String readFile(String fileName) {
-        String output = "";
+        String out=null;
         try {
             byte[] bytes = Files.readAllBytes(Paths.get(fileName));
-            output = new String(bytes, Charset.forName("cp1251"));
+            out = new String(bytes, Charset.forName("cp1251"));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        return output;
+        return out;
     }
 
 

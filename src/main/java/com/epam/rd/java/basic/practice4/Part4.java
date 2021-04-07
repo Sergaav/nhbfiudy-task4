@@ -2,6 +2,7 @@ package com.epam.rd.java.basic.practice4;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Iterator;
@@ -9,19 +10,18 @@ import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Part4 {
-    private final String input;
+public class Part4{
+    private static String input;
 
-    public Part4(String fileName) {
-        this.input = readFile(fileName);
-    }
 
     public static void main(String[] args) {
-        Part4 part4 = new Part4("part4.txt");
+        Part4 part4 = new Part4();
+        input = part4.readFile("part4.txt");
         Iterator<String> iterator = part4.iterator();
         while (iterator.hasNext()) {
             System.out.print(iterator.next().trim() + System.lineSeparator());
         }
+
     }
 
     public Iterator<String> iterator() {
@@ -32,7 +32,7 @@ public class Part4 {
         String out = null;
         try {
             byte[] bytes = Files.readAllBytes(Paths.get(fileName));
-            out = new String(bytes, Charset.forName("cp1251"));
+            out = new String(bytes, StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -40,8 +40,8 @@ public class Part4 {
     }
 
 
-    private class IteratorImpl implements Iterator<String> {
-        Pattern pattern = Pattern.compile("(?imU)\\s*[A-ZÀ-ß][^.!?]*[.!?]");
+    private static class IteratorImpl implements Iterator<String> {
+        Pattern pattern = Pattern.compile("(?imU)\\s*\\p{Lu}[^.!?]*[.!?]");
         Matcher matcher = pattern.matcher(input);
         boolean isNext = false;
 

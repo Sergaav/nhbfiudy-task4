@@ -19,27 +19,27 @@ public class Part6 {
         while (!(query = scanner.nextLine()).equals("stop")) {
             switch (query) {
                 case "Latn":
-                    parseString(input, patternLatin,"Latn");
+                    parseString(input, patternLatin, "Latn");
                     break;
                 case "Cyrl":
-                    parseString(input, patternCyrl,"Cyrl");
+                    parseString(input, patternCyrl, "Cyrl");
                     break;
                 default:
-                    System.out.println("Incorrect input");
+                    System.out.println(query + ": Incorrect input");
             }
         }
 
     }
 
-    private static void parseString(String string, String r,String lang) {
+    private static void parseString(String string, String r, String lang) {
         Pattern pattern = Pattern.compile(r);
         Matcher matcher = pattern.matcher(string);
         StringBuilder stringBuilder = new StringBuilder();
-        String prefix = lang+": ";
         while (matcher.find()) {
             stringBuilder.append(matcher.group().trim()).append(" ");
         }
-        System.out.println(prefix+stringBuilder.toString().trim());
+        String prefix = lang + ": " + stringBuilder.toString().replaceAll("\n", " ").trim();
+        System.out.println(prefix);
     }
 
     private static String getInputFromFile() {

@@ -14,8 +14,8 @@ public class Part6 {
         String input = getInputFromFile();
         Scanner scanner = new Scanner(System.in);
         String query;
-        String patternLatin = "\\p{IsLatin}+";
-        String patternCyrl = "[^\\p{IsLatin}]+";
+        String patternLatin = "[\\p{IsLatin}]+";
+        String patternCyrl = "[^\\p{IsLatin}^\\p{Punct}]+";
         while (!(query = scanner.nextLine()).equals("stop")) {
             switch (query) {
                 case "Latn":
@@ -38,7 +38,7 @@ public class Part6 {
         while (matcher.find()) {
             stringBuilder.append(matcher.group().trim()).append(" ");
         }
-        String prefix = lang + ": " + stringBuilder.toString().replaceAll("\n", " ").trim();
+        String prefix = lang + ": " + stringBuilder.toString().replaceAll("\n", " ").trim()+" ";
         System.out.println(prefix);
     }
 
@@ -48,7 +48,7 @@ public class Part6 {
             byte[] bytes = Files.readAllBytes(Paths.get("part6.txt"));
             output = new String(bytes, Charset.forName("cp1251"));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return output;
     }

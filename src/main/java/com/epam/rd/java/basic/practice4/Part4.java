@@ -20,7 +20,7 @@ public class Part4 {
         Part4 part4 = new Part4("part4.txt");
         Iterator<String> iterator = part4.iterator();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+            System.out.println(iterator.next()+System.lineSeparator());
         }
     }
 
@@ -41,7 +41,7 @@ public class Part4 {
 
 
     private class IteratorImpl implements Iterator<String> {
-        Pattern pattern = Pattern.compile("(?imU)^[A-ZÀ-ß].+[\\r\\n',;]*.+[.?!]$");
+        Pattern pattern = Pattern.compile("(?imU)^\\p{Lu}.+[\\r\\n',;]*.+[.?!]$");
         Matcher matcher = pattern.matcher(input);
         boolean isNext = false;
 

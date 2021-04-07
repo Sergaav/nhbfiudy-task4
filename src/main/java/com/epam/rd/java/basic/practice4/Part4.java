@@ -20,7 +20,7 @@ public class Part4 {
         Part4 part4 = new Part4("part4.txt");
         Iterator<String> iterator = part4.iterator();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next()+System.lineSeparator());
+            System.out.println(iterator.next().trim()+System.lineSeparator());
         }
     }
 
@@ -41,7 +41,7 @@ public class Part4 {
 
 
     private class IteratorImpl implements Iterator<String> {
-        Pattern pattern = Pattern.compile("(?imU)\\p{Lu}.+\\s*.+?[.]");
+        Pattern pattern = Pattern.compile("(?imU)\\s*[A-ZÀ-ß][^.!?]*[.!?]");
         Matcher matcher = pattern.matcher(input);
         boolean isNext = false;
 
@@ -56,7 +56,7 @@ public class Part4 {
             if (!isNext)
                 throw new NoSuchElementException();
 
-            return matcher.group().replaceAll("\\r\\n","");
+            return matcher.group().replaceAll("\\r\\n"," ");
         }
 
         @Override

@@ -20,7 +20,7 @@ public class Part4 {
         Part4 part4 = new Part4("part4.txt");
         Iterator<String> iterator = part4.iterator();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next().trim()+System.lineSeparator());
+            System.out.print(iterator.next().trim() + System.lineSeparator());
         }
     }
 
@@ -29,7 +29,7 @@ public class Part4 {
     }
 
     private String readFile(String fileName) {
-        String out=null;
+        String out = null;
         try {
             byte[] bytes = Files.readAllBytes(Paths.get(fileName));
             out = new String(bytes, Charset.forName("cp1251"));
@@ -55,8 +55,7 @@ public class Part4 {
         public String next() {
             if (!isNext)
                 throw new NoSuchElementException();
-
-            return matcher.group().replaceAll("\\r\\n"," ");
+            return matcher.group().replaceAll(System.lineSeparator(), " ");
         }
 
         @Override

@@ -2,7 +2,6 @@ package com.epam.rd.java.basic.practice4;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Iterator;
@@ -42,7 +41,7 @@ public class Part4 {
 
 
     private class IteratorImpl implements Iterator<String> {
-        Pattern pattern = Pattern.compile("(?imU)\\s*[A-ZÀ-ß][^.!?]*[.!?]");
+        Pattern pattern = Pattern.compile("(?imU)\\s*\\p{Lu}[^.!?]*[.!?]");
         Matcher matcher = pattern.matcher(input);
         boolean isNext = false;
 
@@ -56,9 +55,7 @@ public class Part4 {
         public String next() {
             if (!isNext)
                 throw new NoSuchElementException();
-            byte[] bytes = matcher.group().replaceAll(System.lineSeparator(), " ").getBytes(Charset.forName("cp1251"));
-            String output = new String(bytes, StandardCharsets.UTF_8);
-            return output;
+            return matcher.group().replaceAll(System.lineSeparator(), " ");
         }
 
         @Override

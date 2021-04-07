@@ -1,6 +1,7 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -32,7 +33,7 @@ public class Part4 {
         String out = null;
         try {
             byte[] bytes = Files.readAllBytes(Paths.get(fileName));
-            out = new String(bytes, StandardCharsets.UTF_8);
+            out = new String(bytes, Charset.forName("cp1251"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -55,7 +56,9 @@ public class Part4 {
         public String next() {
             if (!isNext)
                 throw new NoSuchElementException();
-            return matcher.group().replaceAll(System.lineSeparator(), " ");
+            byte[] bytes = matcher.group().replaceAll(System.lineSeparator(), " ").getBytes(Charset.forName("cp1251"));
+            String output = new String(bytes, StandardCharsets.UTF_8);
+            return output;
         }
 
         @Override

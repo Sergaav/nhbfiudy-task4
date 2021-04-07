@@ -24,6 +24,12 @@ public class Demo {
 
         System.out.println("=========================== PART4");
         Part4.main(args);
+
+        System.out.println("=========================== PART5");
+        System.setIn(new ByteArrayInputStream(
+                "table ru^table en^apple ru^stop".replace("^", System.lineSeparator()).getBytes(StandardCharsets.UTF_8)));
+        Part5.main(args);
+        System.setIn(STD_IN);
     }
 
 }

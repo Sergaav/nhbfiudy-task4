@@ -1,4 +1,4 @@
-package com.epam.rd.java.basic.practice4;
+package com.savaz.rd.java.basic.practice4;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
